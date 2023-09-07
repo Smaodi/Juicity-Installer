@@ -104,11 +104,11 @@ case "$ARCH" in
         ;;
 esac
 
-LATEST_RELEASE_URL=$(curl --silent "https://api.github.com/repos/juicity/juicity/releases" | jq -r ".[0].assets[] | select(.name == \"$BINARY_NAME\") | .browser_download_url")
+# LATEST_RELEASE_URL=$(curl --silent "https://api.github.com/repos/juicity/juicity/releases" | jq -r ".[0].assets[] | select(.name == \"$BINARY_NAME\") | .browser_download_url")
 
 # Download and extract
-mkdir -p $INSTALL_DIR
-curl -sL $LATEST_RELEASE_URL -o "$INSTALL_DIR/juicity.zip"
+# mkdir -p $INSTALL_DIR
+# curl -sL $LATEST_RELEASE_URL -o "$INSTALL_DIR/juicity.zip"
 unzip -q "$INSTALL_DIR/juicity.zip" -d $INSTALL_DIR
 
 # Delete all files except juicity-server
