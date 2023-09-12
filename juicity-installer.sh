@@ -20,7 +20,7 @@ print_with_delay() {
 # Introduction animation
 echo ""
 echo ""
-print_with_delay "juicity-installer by DEATHLINE | @NamelesGhoul" 0.1
+print_with_delay "juicity-installer by Smaodi" 0.1
 echo ""
 echo ""
 
@@ -72,44 +72,10 @@ if [[ -d $INSTALL_DIR && -f $SERVICE_FILE ]]; then
     esac
 fi
 
-# Detect Architecture
-ARCH=$(uname -m)
-BINARY_NAME="juicity-linux"
-
-case "$ARCH" in
-    "x86_64")
-        BINARY_NAME+="-x86_64.zip"
-        ;;
-    "arm64")
-        BINARY_NAME+="-arm64.zip"
-        ;;
-    "armv7")
-        BINARY_NAME+="-armv7.zip"
-        ;;
-    "mips32")
-        BINARY_NAME+="-mips32.zip"
-        ;;
-    "mips64")
-        BINARY_NAME+="-mips64.zip"
-        ;;
-    "riscv64")
-        BINARY_NAME+="-riscv64.zip"
-        ;;
-    "i686")
-        BINARY_NAME+="-x86_32.zip"
-        ;;
-    *)
-        echo "Unsupported architecture: $ARCH"
-        exit 1
-        ;;
-esac
-
-# LATEST_RELEASE_URL=$(curl --silent "https://api.github.com/repos/juicity/juicity/releases" | jq -r ".[0].assets[] | select(.name == \"$BINARY_NAME\") | .browser_download_url")
-
 # Download and extract
 # mkdir -p $INSTALL_DIR
 # curl -sL $LATEST_RELEASE_URL -o "$INSTALL_DIR/juicity.zip"
-unzip -q "$INSTALL_DIR/juicity.zip" -d $INSTALL_DIR
+# unzip -q "$INSTALL_DIR/juicity.zip" -d $INSTALL_DIR
 
 # Delete all files except juicity-server
 find $INSTALL_DIR ! -name 'juicity-server' -type f -exec rm -f {} +
